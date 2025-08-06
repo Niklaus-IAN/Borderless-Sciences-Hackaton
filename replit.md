@@ -31,6 +31,8 @@ shared/          # Shared types and schemas
 - [2025-01-06] Improved responsive layout positioning in CoreFeaturesSection and MeetTheAISection
 - [2025-01-06] Enhanced section spacing and mobile responsiveness across landing page
 - [2025-01-06] Added proper padding and layout structure for better visual hierarchy
+- [2025-01-06] Redesigned Core Features section with proper tab functionality and responsive cards
+- [2025-01-06] Completely rebuilt footer (ImageWrapperSection) with responsive grid layout
 
 ## User Preferences
 - To be updated during migration process

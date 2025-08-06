@@ -63,101 +63,59 @@ export const CoreFeaturesSection = (): JSX.Element => {
       </h2>
 
       <Tabs defaultValue="compound-analysis" className="w-full">
-        <div className="relative w-full h-[568px]">
+        {/* Tab navigation */}
+        <TabsList className="flex justify-center gap-2 bg-transparent mb-8 h-12">
+          {features.map((feature) => (
+            <TabsTrigger
+              key={feature.id}
+              value={feature.id}
+              className="data-[state=active]:bg-[#0e7b5d] data-[state=active]:text-white bg-gray-100 text-gray-600 rounded-full px-6 py-2 text-sm font-medium hover:bg-gray-200 transition-colors"
+            >
+              {feature.title.split(' ').slice(0, 2).join(' ')}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+        <div className="relative w-full min-h-[400px]">
           {features.map((feature) => (
             <TabsContent
               key={feature.id}
               value={feature.id}
-              className="absolute inset-0 w-full h-full m-0"
+              className="w-full h-full m-0"
             >
-              <Card className="w-full h-full border-none shadow-none">
-                <CardContent className="p-0">
-                  <div className="relative w-full h-[568px]">
-                    {/* Background styling would be applied here based on the feature */}
-                    <div
-                      className="relative w-full h-[568px]"
-                      style={{
-                        backgroundImage: `url(/figmaAssets/rectangle-${
-                          feature.id === "compound-analysis"
-                            ? "35"
-                            : feature.id === "pharma-comparison"
-                              ? "36"
-                              : feature.id === "on-chain-logging"
-                                ? "44"
-                                : "34"
-                        }.svg)`,
-                        backgroundSize: "100% 100%",
-                      }}
-                    >
-                      {/* Tab title at the top */}
-                      <div
-                        className={`absolute top-[52px] ${feature.position} font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[${feature.color}] text-[length:var(--brand-body-med-font-size)] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]`}
+              <Card className="w-full border-none shadow-none bg-gradient-to-r from-green-50 to-green-100 rounded-2xl overflow-hidden">
+                <CardContent className="p-8 lg:p-12">
+                  <div className="flex flex-col lg:flex-row items-center gap-8">
+                    {/* Content */}
+                    <div className="flex-1 space-y-6">
+                      <h3 
+                        className="text-2xl lg:text-3xl font-bold text-gray-800 leading-tight"
+                        style={{ color: feature.color }}
                       >
-                        <span>
-                          {feature.title.split(" ").map((word, i) => (
-                            <span key={i}>
-                              {word}
-                              {i < feature.title.split(" ").length - 1 &&
-                                i % 2 === 1 && <br />}
-                              {i < feature.title.split(" ").length - 1 &&
-                                i % 2 === 0 &&
-                                " "}
-                            </span>
-                          ))}
-                        </span>
-                      </div>
-
-                      {/* Content area */}
-                      <div className="absolute inset-0 flex items-center justify-between px-16 py-20">
-                        <div className="flex flex-col w-1/3 items-start gap-6">
-                          <div
-                            className={`relative w-fit [font-family:'Maison_Neue-Bold',Helvetica] font-bold text-[${feature.color}] text-3xl tracking-[0] leading-[normal]`}
-                            dangerouslySetInnerHTML={{
-                              __html: feature.heading.replace(" ", " <br/>"),
-                            }}
-                          />
-
-                          <div
-                            className={`relative font-brand-body font-[number:var(--brand-body-font-weight)] text-[${feature.color}] text-[length:var(--brand-body-font-size)] tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]`}
-                          >
-                            <span>
-                              {feature.description.split("\n").map((line, i) => (
-                                <span key={i}>
-                                  {line}
-                                  {i <
-                                    feature.description.split("\n").length -
-                                      1 && <br />}
-                                </span>
-                              ))}
-                            </span>
-                          </div>
-                        </div>
-                        
-                        <img
-                          className="w-1/2 h-64 object-cover rounded-2xl"
-                          alt={`${feature.heading} illustration`}
-                          src={feature.image}
-                        />
-                      </div>
+                        {feature.heading}
+                      </h3>
+                      
+                      <p 
+                        className="text-lg leading-relaxed"
+                        style={{ color: feature.color }}
+                      >
+                        {feature.description.replace(/\n/g, ' ')}
+                      </p>
+                    </div>
+                    
+                    {/* Image */}
+                    <div className="flex-shrink-0 w-full lg:w-1/2">
+                      <img
+                        className="w-full h-64 lg:h-80 object-cover rounded-xl shadow-lg"
+                        alt={`${feature.heading} illustration`}
+                        src={feature.image}
+                      />
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </TabsContent>
           ))}
-
-          {/* Tab navigation */}
-          <TabsList className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-transparent border border-gray-200 rounded-full">
-            {features.map((feature) => (
-              <TabsTrigger
-                key={feature.id}
-                value={feature.id}
-                className="data-[state=active]:bg-white data-[state=active]:text-black rounded-full px-4"
-              >
-                <span className="sr-only">{feature.title}</span>
-              </TabsTrigger>
-            ))}
-          </TabsList>
         </div>
       </Tabs>
     </section>
