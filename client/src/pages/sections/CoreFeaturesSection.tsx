@@ -89,64 +89,60 @@ export const CoreFeaturesSection = (): JSX.Element => {
                         backgroundSize: "100% 100%",
                       }}
                     >
-                      {/* Tab title positioned at the curved top */}
-                      <div
-                        className="absolute w-[200px] text-center"
-                        style={{
-                          top: '30px',
-                          left: feature.id === "toxicity-checks" ? '60px' : 
-                               feature.id === "compound-analysis" ? '280px' :
-                               feature.id === "pharma-comparison" ? '500px' : '720px',
-                          color: feature.color,
-                          fontSize: '14px',
-                          fontWeight: '500',
-                          lineHeight: '1.2'
-                        }}
-                      >
-                        {feature.title.split("(")[0].trim().split(" ").map((word, i, arr) => (
-                          <span key={i}>
-                            {word}
-                            {i < arr.length - 1 && (i + 1) % 2 === 0 && <br />}
-                            {i < arr.length - 1 && (i + 1) % 2 !== 0 && " "}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Main content area with proper alignment */}
-                      <div className="absolute top-[120px] left-[60px] right-[60px] bottom-[60px] flex items-center justify-between">
-                        {/* Left content */}
-                        <div className="flex flex-col max-w-[400px] space-y-6">
+                      {/* Content positioned based on the actual design layout */}
+                      <div className="absolute inset-0">
+                        {/* Heading positioned in left area of the curved design */}
+                        <div 
+                          className="absolute"
+                          style={{
+                            top: '200px',
+                            left: '80px',
+                            width: '350px'
+                          }}
+                        >
                           <h3 
-                            className="text-3xl font-bold leading-tight"
-                            style={{ color: feature.color }}
+                            className="text-4xl font-bold leading-tight mb-6"
+                            style={{ 
+                              color: feature.color,
+                              fontFamily: "'Maison Neue', sans-serif"
+                            }}
                           >
-                            {feature.heading.split(" ").map((word, i, arr) => (
-                              <span key={i}>
-                                {word}
-                                {word === "&" || word === "and" ? <br /> : 
-                                 i < arr.length - 1 && (arr[i + 1] === "&" || arr[i + 1] === "and") ? " " :
-                                 i < arr.length - 1 ? " " : ""}
-                              </span>
-                            ))}
+                            {feature.heading.includes('&') || feature.heading.includes('and') ? (
+                              <>
+                                {feature.heading.split(/(\s+&\s+|\s+and\s+)/)[0]}
+                                <br />
+                                {feature.heading.split(/(\s+&\s+|\s+and\s+)/).slice(1).join('')}
+                              </>
+                            ) : (
+                              feature.heading
+                            )}
                           </h3>
                           
                           <p 
-                            className="text-base leading-relaxed"
+                            className="text-lg leading-relaxed max-w-[320px]"
                             style={{ color: feature.color }}
                           >
                             {feature.description.split("\n").map((line, i) => (
                               <span key={i}>
-                                {line}
+                                {line.trim()}
                                 {i < feature.description.split("\n").length - 1 && <br />}
                               </span>
                             ))}
                           </p>
                         </div>
                         
-                        {/* Right image */}
-                        <div className="flex-shrink-0 ml-8">
+                        {/* Image positioned in right area */}
+                        <div 
+                          className="absolute"
+                          style={{
+                            top: '190px',
+                            right: '80px',
+                            width: '350px',
+                            height: '240px'
+                          }}
+                        >
                           <img
-                            className="w-[300px] h-[200px] object-cover rounded-xl"
+                            className="w-full h-full object-cover rounded-2xl shadow-lg"
                             alt={`${feature.heading} illustration`}
                             src={feature.image}
                           />
