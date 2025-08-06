@@ -34,9 +34,9 @@ export const MeetTheAISection = (): JSX.Element => {
           src="/figmaAssets/rectangle-31.svg"
         />
         {/* Main layout with left text and right cards */}
-        <div className="flex items-start gap-16">
+        <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-16">
           {/* Left side - Curved yellow banner with text */}
-          <div className="flex-1 max-w-lg">
+          <div className="w-full lg:flex-1 lg:max-w-lg">
             <div 
               className="relative bg-[#e8e4a6] rounded-3xl px-8 py-12 shadow-lg mb-8"
               style={{
@@ -44,7 +44,7 @@ export const MeetTheAISection = (): JSX.Element => {
                 transform: 'rotate(-2deg)'
               }}
             >
-              <h2 className="text-4xl font-bold text-[#07130e] leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#07130e] leading-tight">
                 Meet the AI Revolutionizing Herbal Research
               </h2>
             </div>
@@ -83,8 +83,8 @@ export const MeetTheAISection = (): JSX.Element => {
           </div>
 
           {/* Right side - 2x2 Grid of green cards */}
-          <div className="flex-1 max-w-2xl">
-            <div className="grid grid-cols-2 gap-4">
+          <div className="w-full lg:flex-1 lg:max-w-2xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {audienceCards.map((card, index) => (
                 <div
                   key={index}
