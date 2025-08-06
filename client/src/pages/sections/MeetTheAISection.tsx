@@ -51,12 +51,12 @@ export const MeetTheAISection = (): JSX.Element => {
             
             {/* Additional descriptive text */}
             <div className="text-white space-y-4 ml-4">
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed text-white">
                 Borderless Science AI is a smart agent built to decode the science behind herbal medicine. 
                 It identifies a plant's active compounds, evaluates toxicity, and matches ingredients to 
                 scientifically backed treatments, all in seconds.
               </p>
-              <p className="text-base leading-relaxed opacity-90">
+              <p className="text-base leading-relaxed text-white opacity-90">
                 Powered by advanced AI and secured with blockchain, it bridges ancient knowledge with 
                 cutting-edge science. In a world full of guesswork, Borderless brings clarity, safety, 
                 and proof to natural medicine.
