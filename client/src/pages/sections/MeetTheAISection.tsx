@@ -52,9 +52,9 @@ export const MeetTheAISection = (): JSX.Element => {
             {/* Additional descriptive text */}
             <div className="space-y-4 ml-4">
               <p 
-                className="text-lg leading-relaxed"
+                className="text-lg leading-relaxed text-black"
                 style={{ 
-                  color: '#ffffff',
+                  color: '#07130e',
                   fontFamily: 'var(--brand-body-font-family)',
                   fontSize: 'var(--brand-body-font-size)',
                   fontWeight: 'var(--brand-body-font-weight)',
@@ -66,9 +66,9 @@ export const MeetTheAISection = (): JSX.Element => {
                 scientifically backed treatments, all in seconds.
               </p>
               <p 
-                className="text-base leading-relaxed opacity-90"
+                className="text-base leading-relaxed text-black opacity-90"
                 style={{ 
-                  color: '#ffffff',
+                  color: '#07130e',
                   fontFamily: 'var(--brand-body-font-family)',
                   fontSize: 'var(--brand-body-font-size)',
                   fontWeight: 'var(--brand-body-font-weight)',
