@@ -89,55 +89,68 @@ export const CoreFeaturesSection = (): JSX.Element => {
                         backgroundSize: "100% 100%",
                       }}
                     >
-                      {/* Tab title at the top */}
+                      {/* Tab title positioned at the curved top */}
                       <div
-                        className={`absolute top-[52px] ${feature.position} font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[${feature.color}] text-[length:var(--brand-body-med-font-size)] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]`}
+                        className="absolute w-[200px] text-center"
+                        style={{
+                          top: '30px',
+                          left: feature.id === "toxicity-checks" ? '60px' : 
+                               feature.id === "compound-analysis" ? '280px' :
+                               feature.id === "pharma-comparison" ? '500px' : '720px',
+                          color: feature.color,
+                          fontSize: '14px',
+                          fontWeight: '500',
+                          lineHeight: '1.2'
+                        }}
                       >
-                        <span>
-                          {feature.title.split(" ").map((word, i) => (
-                            <span key={i}>
-                              {word}
-                              {i < feature.title.split(" ").length - 1 &&
-                                i % 2 === 1 && <br />}
-                              {i < feature.title.split(" ").length - 1 &&
-                                i % 2 === 0 &&
-                                " "}
-                            </span>
-                          ))}
-                        </span>
+                        {feature.title.split("(")[0].trim().split(" ").map((word, i, arr) => (
+                          <span key={i}>
+                            {word}
+                            {i < arr.length - 1 && (i + 1) % 2 === 0 && <br />}
+                            {i < arr.length - 1 && (i + 1) % 2 !== 0 && " "}
+                          </span>
+                        ))}
                       </div>
 
-                      {/* Content area */}
-                      <div className="absolute inset-0 flex items-center justify-between px-16 py-20">
-                        <div className="flex flex-col w-1/3 items-start gap-6">
-                          <div
-                            className={`relative w-fit [font-family:'Maison_Neue-Bold',Helvetica] font-bold text-[${feature.color}] text-3xl tracking-[0] leading-[normal]`}
-                            dangerouslySetInnerHTML={{
-                              __html: feature.heading.replace(/\s+(&|and)\s+/g, " <br/>$1 "),
-                            }}
-                          />
-
-                          <div
-                            className={`relative font-brand-body font-[number:var(--brand-body-font-weight)] text-[${feature.color}] text-[length:var(--brand-body-font-size)] tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]`}
+                      {/* Main content area with proper alignment */}
+                      <div className="absolute top-[120px] left-[60px] right-[60px] bottom-[60px] flex items-center justify-between">
+                        {/* Left content */}
+                        <div className="flex flex-col max-w-[400px] space-y-6">
+                          <h3 
+                            className="text-3xl font-bold leading-tight"
+                            style={{ color: feature.color }}
                           >
-                            <span>
-                              {feature.description.split("\n").map((line, i) => (
-                                <span key={i}>
-                                  {line}
-                                  {i <
-                                    feature.description.split("\n").length -
-                                      1 && <br />}
-                                </span>
-                              ))}
-                            </span>
-                          </div>
+                            {feature.heading.split(" ").map((word, i, arr) => (
+                              <span key={i}>
+                                {word}
+                                {word === "&" || word === "and" ? <br /> : 
+                                 i < arr.length - 1 && (arr[i + 1] === "&" || arr[i + 1] === "and") ? " " :
+                                 i < arr.length - 1 ? " " : ""}
+                              </span>
+                            ))}
+                          </h3>
+                          
+                          <p 
+                            className="text-base leading-relaxed"
+                            style={{ color: feature.color }}
+                          >
+                            {feature.description.split("\n").map((line, i) => (
+                              <span key={i}>
+                                {line}
+                                {i < feature.description.split("\n").length - 1 && <br />}
+                              </span>
+                            ))}
+                          </p>
                         </div>
                         
-                        <img
-                          className="w-1/2 h-64 object-cover rounded-2xl"
-                          alt={`${feature.heading} illustration`}
-                          src={feature.image}
-                        />
+                        {/* Right image */}
+                        <div className="flex-shrink-0 ml-8">
+                          <img
+                            className="w-[300px] h-[200px] object-cover rounded-xl"
+                            alt={`${feature.heading} illustration`}
+                            src={feature.image}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -146,18 +159,27 @@ export const CoreFeaturesSection = (): JSX.Element => {
             </TabsContent>
           ))}
 
-          {/* Tab navigation with curved styling */}
-          <TabsList className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-transparent border-none rounded-full h-12">
-            {features.map((feature) => (
-              <TabsTrigger
-                key={feature.id}
-                value={feature.id}
-                className="w-3 h-3 rounded-full mx-1 p-0 data-[state=active]:bg-white data-[state=inactive]:bg-white/50 border-none"
-              >
-                <span className="sr-only">{feature.title}</span>
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          {/* Curved tabs integrated into the design */}
+          <div className="absolute top-0 left-0 right-0 flex justify-center pointer-events-none">
+            <TabsList className="flex bg-transparent border-none h-[80px] gap-0 pointer-events-auto">
+              {features.map((feature, index) => (
+                <TabsTrigger
+                  key={feature.id}
+                  value={feature.id}
+                  className="relative bg-transparent border-none text-transparent hover:text-transparent data-[state=active]:text-transparent px-[90px] py-6 transition-all duration-200"
+                  style={{
+                    marginLeft: index === 0 ? '0px' : '-20px',
+                  }}
+                >
+                  <div 
+                    className="absolute inset-0 opacity-0 hover:opacity-20 data-[state=active]:opacity-30 transition-opacity"
+                    style={{ backgroundColor: feature.color }}
+                  />
+                  <span className="sr-only">{feature.title}</span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
         </div>
       </Tabs>
     </section>
