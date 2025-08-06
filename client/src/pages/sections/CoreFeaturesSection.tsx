@@ -53,7 +53,7 @@ export const CoreFeaturesSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col items-center gap-[50px] w-full max-w-[1090px] mx-auto px-6">
+    <section className="flex flex-col items-center gap-[50px] w-full max-w-[1090px] mx-auto px-6 pt-8">
       <h2 className="font-brand-h2 font-[number:var(--brand-h2-font-weight)] text-[#07130e] text-[length:var(--brand-h2-font-size)] text-center tracking-[var(--brand-h2-letter-spacing)] leading-[var(--brand-h2-line-height)] [font-style:var(--brand-h2-font-style)]">
         Core Features Built for{" "}
         <span className="font-brand-h2 [font-style:var(--brand-h2-font-style)] font-[number:var(--brand-h2-font-weight)] tracking-[var(--brand-h2-letter-spacing)] leading-[var(--brand-h2-line-height)] text-[length:var(--brand-h2-font-size)]">
@@ -62,60 +62,88 @@ export const CoreFeaturesSection = (): JSX.Element => {
         Intelligence
       </h2>
 
-      <Tabs defaultValue="compound-analysis" className="w-full">
-        {/* Tab navigation */}
-        <TabsList className="flex justify-center gap-2 bg-transparent mb-8 h-12">
-          {features.map((feature) => (
-            <TabsTrigger
-              key={feature.id}
-              value={feature.id}
-              className="data-[state=active]:bg-[#0e7b5d] data-[state=active]:text-white bg-gray-100 text-gray-600 rounded-full px-6 py-2 text-sm font-medium hover:bg-gray-200 transition-colors"
-            >
-              {feature.title.split(' ').slice(0, 2).join(' ')}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-
-        <div className="relative w-full min-h-[400px]">
-          {features.map((feature) => (
-            <TabsContent
-              key={feature.id}
-              value={feature.id}
-              className="w-full h-full m-0"
-            >
-              <Card className="w-full border-none shadow-none bg-gradient-to-r from-green-50 to-green-100 rounded-2xl overflow-hidden">
-                <CardContent className="p-8 lg:p-12">
-                  <div className="flex flex-col lg:flex-row items-center gap-8">
-                    {/* Content */}
-                    <div className="flex-1 space-y-6">
+      <Tabs defaultValue="compound-analysis" className="w-full relative">
+        <div className="relative w-full h-[568px] rounded-3xl overflow-hidden">
+          {/* Background container for all tabs */}
+          <div className="absolute inset-0">
+            {features.map((feature) => (
+              <TabsContent
+                key={feature.id}
+                value={feature.id}
+                className="absolute inset-0 w-full h-full m-0"
+              >
+                <div
+                  className="relative w-full h-full rounded-3xl overflow-hidden"
+                  style={{
+                    background: `linear-gradient(135deg, ${feature.color}10 0%, ${feature.color}20 100%)`,
+                  }}
+                >
+                  {/* Content Layout */}
+                  <div className="flex items-center justify-between h-full px-12 py-8">
+                    {/* Left side - Text content */}
+                    <div className="flex-1 max-w-lg space-y-6">
                       <h3 
-                        className="text-2xl lg:text-3xl font-bold text-gray-800 leading-tight"
+                        className="text-4xl font-bold leading-tight whitespace-pre-line"
                         style={{ color: feature.color }}
                       >
-                        {feature.heading}
+                        {feature.heading.replace(/(\w+)\s+(&|and)/g, '$1\n$2')}
                       </h3>
                       
                       <p 
                         className="text-lg leading-relaxed"
                         style={{ color: feature.color }}
                       >
-                        {feature.description.replace(/\n/g, ' ')}
+                        {feature.description.split('\n').map((line, i) => (
+                          <span key={i}>
+                            {line}
+                            {i < feature.description.split('\n').length - 1 && <br />}
+                          </span>
+                        ))}
                       </p>
                     </div>
                     
-                    {/* Image */}
-                    <div className="flex-shrink-0 w-full lg:w-1/2">
+                    {/* Right side - Image */}
+                    <div className="flex-shrink-0">
                       <img
-                        className="w-full h-64 lg:h-80 object-cover rounded-xl shadow-lg"
+                        className="w-[400px] h-[300px] object-cover rounded-2xl shadow-xl"
                         alt={`${feature.heading} illustration`}
                         src={feature.image}
                       />
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          ))}
+                </div>
+              </TabsContent>
+            ))}
+          </div>
+
+          {/* Tab Navigation - Styled as curved tabs at the top */}
+          <div className="absolute -top-4 left-0 right-0 z-20 flex justify-center">
+            <TabsList className="flex bg-transparent h-20 gap-1 px-8">
+              {features.map((feature, index) => (
+                <TabsTrigger
+                  key={feature.id}
+                  value={feature.id}
+                  className="relative px-6 py-3 text-sm font-medium transition-all duration-300 border-0 bg-white shadow-lg hover:shadow-xl min-w-[180px] text-center h-16 flex items-center justify-center data-[state=active]:z-30"
+                  style={{
+                    color: feature.color,
+                    borderRadius: '20px 20px 20px 20px',
+                    marginTop: index % 2 === 0 ? '0px' : '16px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(10px)',
+                  }}
+                >
+                  <div className="relative z-20 leading-tight">
+                    {feature.title.includes('(') 
+                      ? feature.title.split('(')[0].trim()
+                      : feature.title.split(' ').length > 2
+                        ? feature.title.split(' ').slice(0, 2).join(' ')
+                        : feature.title
+                    }
+                  </div>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
         </div>
       </Tabs>
     </section>
