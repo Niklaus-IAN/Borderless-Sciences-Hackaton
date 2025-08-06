@@ -26,9 +26,9 @@ export const HowItWorksSection = (): JSX.Element => {
   return (
     <section className="relative w-full py-16 bg-[url('/figmaAssets/rectangle-32.svg')] bg-no-repeat bg-cover">
       <div className="container mx-auto">
-        <div className="flex flex-wrap items-start justify-between gap-12 lg:gap-48">
+        <div className="flex items-start gap-16 max-w-7xl mx-auto">
           {/* Left side - Process steps */}
-          <div className="relative w-full lg:w-[480px]">
+          <div className="flex-1 max-w-lg">
             {/* Input Your Specimen Card */}
             <Card className="w-full mb-6 bg-[#daece3] rounded-3xl border-none">
               <CardContent className="p-0">
@@ -105,7 +105,7 @@ export const HowItWorksSection = (): JSX.Element => {
           </div>
 
           {/* Right side - Heading and CTA */}
-          <div className="w-full lg:w-[411px] mt-8 lg:mt-0">
+          <div className="flex-1 max-w-lg">
             <h2 className="[font-family:'Maison_Neue-Regular',Helvetica] font-normal text-[80px] tracking-[0] leading-[normal]">
               <span className="text-[#07130e]">
                 How the Borderless
