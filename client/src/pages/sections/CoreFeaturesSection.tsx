@@ -88,19 +88,26 @@ export const CoreFeaturesSection = (): JSX.Element => {
                         backgroundSize: "100% 100%",
                       }}
                     >
-                      {/* Content positioned like the original design */}
-                      <div className="absolute inset-0 flex items-center justify-between px-20 py-16">
-                        <div className="flex flex-col w-2/5 items-start gap-6">
-                          <div
-                            className="relative w-fit text-5xl font-bold leading-tight"
+                      {/* Content positioned to align within curved container */}
+                      <div className="absolute top-[120px] left-[80px] right-[80px] bottom-[80px] flex items-center justify-between">
+                        <div className="flex flex-col max-w-[380px] items-start gap-6">
+                          <h3
+                            className="text-4xl font-bold leading-tight"
                             style={{ color: feature.color }}
-                            dangerouslySetInnerHTML={{
-                              __html: feature.heading.replace(/\s+&\s+/, " <br/>&nbsp;"),
-                            }}
-                          />
+                          >
+                            {feature.heading.includes('&') ? (
+                              <>
+                                {feature.heading.split('&')[0].trim()}
+                                <br />
+                                & {feature.heading.split('&')[1].trim()}
+                              </>
+                            ) : (
+                              feature.heading
+                            )}
+                          </h3>
 
-                          <div
-                            className="relative text-lg leading-relaxed"
+                          <p
+                            className="text-base leading-relaxed max-w-[350px]"
                             style={{ color: feature.color }}
                           >
                             {feature.description.split("\n").map((line, i) => (
@@ -109,14 +116,16 @@ export const CoreFeaturesSection = (): JSX.Element => {
                                 {i < feature.description.split("\n").length - 1 && <br />}
                               </span>
                             ))}
-                          </div>
+                          </p>
                         </div>
                         
-                        <img
-                          className="w-2/5 h-72 object-cover rounded-2xl shadow-lg"
-                          alt={`${feature.heading} illustration`}
-                          src={feature.image}
-                        />
+                        <div className="flex-shrink-0 ml-8">
+                          <img
+                            className="w-[320px] h-[220px] object-cover rounded-xl shadow-lg"
+                            alt={`${feature.heading} illustration`}
+                            src={feature.image}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
