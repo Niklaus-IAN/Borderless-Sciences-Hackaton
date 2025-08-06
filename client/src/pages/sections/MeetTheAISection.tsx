@@ -25,8 +25,14 @@ export const MeetTheAISection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full py-16 bg-black">
+    <section className="relative w-full py-16">
       <div className="relative mx-auto max-w-7xl px-6">
+        {/* Background image */}
+        <img
+          className="absolute inset-0 w-full h-full object-cover -z-10"
+          alt="Background"
+          src="/figmaAssets/rectangle-31.svg"
+        />
         {/* Main layout with left text and right cards */}
         <div className="flex items-start gap-16">
           {/* Left side - Curved yellow banner with text */}
