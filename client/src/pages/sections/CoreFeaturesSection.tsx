@@ -62,122 +62,146 @@ export const CoreFeaturesSection = (): JSX.Element => {
         Intelligence
       </h2>
 
-      <Tabs defaultValue="toxicity-checks" className="w-full">
-        <div className="relative w-full h-[568px]">
-          {features.map((feature) => (
-            <TabsContent
-              key={feature.id}
-              value={feature.id}
-              className="absolute inset-0 w-full h-full m-0"
-            >
-              <Card className="w-full h-full border-none shadow-none">
-                <CardContent className="p-0">
-                  <div className="relative w-full h-[568px]">
-                    {/* Background styling using the correct figma assets */}
-                    <div
-                      className="relative w-full h-[568px]"
-                      style={{
-                        backgroundImage: `url(/figmaAssets/rectangle-${
-                          feature.id === "compound-analysis"
-                            ? "35"
-                            : feature.id === "pharma-comparison"
-                              ? "36"
-                              : feature.id === "on-chain-logging"
-                                ? "44"
-                                : "34"
-                        }.svg)`,
-                        backgroundSize: "100% 100%",
-                      }}
-                    >
-                      {/* Content positioned based on the actual design layout */}
-                      <div className="absolute inset-0">
-                        {/* Heading positioned in left area of the curved design */}
-                        <div 
-                          className="absolute"
-                          style={{
-                            top: '200px',
-                            left: '80px',
-                            width: '350px'
+      <div className="relative w-full max-w-[1000px] mx-auto">
+        {/* Tab Navigation - Curved tabs at top exactly like design */}
+        <Tabs defaultValue="toxicity-checks" className="w-full">
+          <div className="relative">
+            {/* Curved tab buttons */}
+            <TabsList className="absolute top-0 left-0 right-0 z-20 flex justify-center bg-transparent border-none h-auto gap-0">
+              <TabsTrigger
+                value="toxicity-checks"
+                className="relative w-[235px] h-[100px] bg-[#e8e4a6] hover:bg-[#e8e4a6]/90 data-[state=active]:bg-[#e8e4a6] border-none shadow-lg text-[#575936] text-sm font-medium"
+                style={{
+                  borderRadius: '20px 20px 0 0',
+                  clipPath: 'polygon(0 0, 100% 0, 85% 100%, 15% 100%)'
+                }}
+              >
+                <div className="text-center leading-tight">
+                  Toxicity &<br />Deficiency Checks
+                </div>
+              </TabsTrigger>
+              
+              <TabsTrigger
+                value="compound-analysis"
+                className="relative w-[235px] h-[100px] bg-[#c4d4b0] hover:bg-[#c4d4b0]/90 data-[state=active]:bg-[#c4d4b0] border-none shadow-lg text-[#4b533e] text-sm font-medium -ml-[15px]"
+                style={{
+                  borderRadius: '20px 20px 0 0',
+                  clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)'
+                }}
+              >
+                <div className="text-center leading-tight">
+                  Compound<br />Analysis
+                </div>
+              </TabsTrigger>
+              
+              <TabsTrigger
+                value="pharma-comparison"
+                className="relative w-[235px] h-[100px] bg-[#b8c5c1] hover:bg-[#b8c5c1]/90 data-[state=active]:bg-[#b8c5c1] border-none shadow-lg text-[#4c534f] text-sm font-medium -ml-[15px]"
+                style={{
+                  borderRadius: '20px 20px 0 0',
+                  clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)'
+                }}
+              >
+                <div className="text-center leading-tight">
+                  Pharma<br />Comparison
+                </div>
+              </TabsTrigger>
+              
+              <TabsTrigger
+                value="on-chain-logging"
+                className="relative w-[235px] h-[100px] bg-[#d4c4a0] hover:bg-[#d4c4a0]/90 data-[state=active]:bg-[#d4c4a0] border-none shadow-lg text-[#594c36] text-sm font-medium -ml-[15px]"
+                style={{
+                  borderRadius: '20px 20px 0 0',
+                  clipPath: 'polygon(15% 0, 85% 0, 100% 100%, 0 100%)'
+                }}
+              >
+                <div className="text-center leading-tight">
+                  On-Chain Logging<br />(SEI Blockchain)
+                </div>
+              </TabsTrigger>
+            </TabsList>
+
+            {/* Main content area */}
+            <div className="relative mt-[80px]">
+              {features.map((feature) => (
+                <TabsContent
+                  key={feature.id}
+                  value={feature.id}
+                  className="w-full h-[480px] m-0"
+                >
+                  <div
+                    className="w-full h-full relative rounded-b-3xl overflow-hidden"
+                    style={{
+                      backgroundImage: `url(/figmaAssets/rectangle-${
+                        feature.id === "compound-analysis"
+                          ? "35"
+                          : feature.id === "pharma-comparison"
+                            ? "36"
+                            : feature.id === "on-chain-logging"
+                              ? "44"
+                              : "34"
+                      }.svg)`,
+                      backgroundSize: "100% 100%",
+                      backgroundRepeat: "no-repeat"
+                    }}
+                  >
+                    {/* Content layout matching the design */}
+                    <div className="absolute top-16 left-16 right-16 bottom-16 flex items-center justify-between">
+                      {/* Left side content */}
+                      <div className="flex-1 max-w-[400px] space-y-6">
+                        <h3 
+                          className="text-5xl font-bold leading-tight"
+                          style={{ 
+                            color: feature.color,
+                            fontFamily: "'Maison Neue', sans-serif"
                           }}
                         >
-                          <h3 
-                            className="text-4xl font-bold leading-tight mb-6"
-                            style={{ 
-                              color: feature.color,
-                              fontFamily: "'Maison Neue', sans-serif"
-                            }}
-                          >
-                            {feature.heading.includes('&') || feature.heading.includes('and') ? (
-                              <>
-                                {feature.heading.split(/(\s+&\s+|\s+and\s+)/)[0]}
-                                <br />
-                                {feature.heading.split(/(\s+&\s+|\s+and\s+)/).slice(1).join('')}
-                              </>
-                            ) : (
-                              feature.heading
-                            )}
-                          </h3>
-                          
-                          <p 
-                            className="text-lg leading-relaxed max-w-[320px]"
-                            style={{ color: feature.color }}
-                          >
-                            {feature.description.split("\n").map((line, i) => (
-                              <span key={i}>
-                                {line.trim()}
-                                {i < feature.description.split("\n").length - 1 && <br />}
-                              </span>
-                            ))}
-                          </p>
-                        </div>
+                          {feature.heading.includes('&') ? (
+                            <>
+                              {feature.heading.split('&')[0].trim()}
+                              <br />
+                              & {feature.heading.split('&')[1].trim()}
+                            </>
+                          ) : feature.heading.includes('and') ? (
+                            <>
+                              {feature.heading.split('and')[0].trim()}
+                              <br />
+                              and {feature.heading.split('and')[1].trim()}
+                            </>
+                          ) : (
+                            feature.heading
+                          )}
+                        </h3>
                         
-                        {/* Image positioned in right area */}
-                        <div 
-                          className="absolute"
-                          style={{
-                            top: '190px',
-                            right: '80px',
-                            width: '350px',
-                            height: '240px'
-                          }}
+                        <p 
+                          className="text-lg leading-relaxed max-w-[350px]"
+                          style={{ color: feature.color }}
                         >
-                          <img
-                            className="w-full h-full object-cover rounded-2xl shadow-lg"
-                            alt={`${feature.heading} illustration`}
-                            src={feature.image}
-                          />
-                        </div>
+                          {feature.description.split("\n").map((line, i) => (
+                            <span key={i}>
+                              {line.trim()}
+                              {i < feature.description.split("\n").length - 1 && <br />}
+                            </span>
+                          ))}
+                        </p>
+                      </div>
+                      
+                      {/* Right side image */}
+                      <div className="flex-shrink-0">
+                        <img
+                          className="w-[400px] h-[280px] object-cover rounded-2xl shadow-xl"
+                          alt={`${feature.heading} illustration`}
+                          src={feature.image}
+                        />
                       </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          ))}
-
-          {/* Curved tabs integrated into the design */}
-          <div className="absolute top-0 left-0 right-0 flex justify-center pointer-events-none">
-            <TabsList className="flex bg-transparent border-none h-[80px] gap-0 pointer-events-auto">
-              {features.map((feature, index) => (
-                <TabsTrigger
-                  key={feature.id}
-                  value={feature.id}
-                  className="relative bg-transparent border-none text-transparent hover:text-transparent data-[state=active]:text-transparent px-[90px] py-6 transition-all duration-200"
-                  style={{
-                    marginLeft: index === 0 ? '0px' : '-20px',
-                  }}
-                >
-                  <div 
-                    className="absolute inset-0 opacity-0 hover:opacity-20 data-[state=active]:opacity-30 transition-opacity"
-                    style={{ backgroundColor: feature.color }}
-                  />
-                  <span className="sr-only">{feature.title}</span>
-                </TabsTrigger>
+                </TabsContent>
               ))}
-            </TabsList>
+            </div>
           </div>
-        </div>
-      </Tabs>
+        </Tabs>
+      </div>
     </section>
   );
 };
