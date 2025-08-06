@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export const HeroBannerSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full max-w-[1084px] items-center gap-[30px] mx-auto">
+    <section className="flex flex-col w-full max-w-[1084px] items-center gap-[30px] mx-auto px-6">
       <div className="flex flex-col items-center justify-center gap-2">
         <Badge className="px-4 py-2 bg-[#ffd99a] text-[#07130e] rounded-3xl font-brand-body text-[length:var(--brand-body-font-size)] tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)]">
           Welcome to the Edge of Everything

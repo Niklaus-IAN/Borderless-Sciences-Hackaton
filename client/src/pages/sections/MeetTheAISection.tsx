@@ -97,29 +97,23 @@ export const MeetTheAISection = (): JSX.Element => {
 
           {/* Right side - Cards grid */}
           <div className="flex flex-col items-center gap-10 pt-8">
-            <div className="relative w-full h-[656px]">
+            <div className="grid grid-cols-2 gap-6 w-full max-w-lg">
               {audienceCards.map((card, index) => (
                 <div
                   key={index}
-                  className={`absolute w-[350px] h-80 ${card.position}`}
+                  className="relative w-full h-80 flex flex-col items-center"
                 >
-                  <div className="relative w-full h-full">
-                    <Card className="absolute w-[250px] h-80 bg-[#052b21] rounded-2xl border-none">
-                      <CardContent
-                        className={`absolute ${card.contentPosition} p-0`}
-                      >
-                        <p className="font-brand-subtext font-[number:var(--brand-subtext-font-weight)] [font-style:var(--brand-subtext-font-style)] text-white text-[length:var(--brand-subtext-font-size)] text-center tracking-[var(--brand-subtext-letter-spacing)] leading-[var(--brand-subtext-line-height)]">
-                          {card.content}
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Badge
-                      className={`absolute ${card.badgePosition} px-5 py-2.5 bg-white text-[#07130e] rounded-2xl shadow-green-shadow font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[length:var(--brand-body-med-font-size)] tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]`}
-                    >
-                      {card.badgeText}
-                    </Badge>
-                  </div>
+                  <Badge className="mb-4 px-5 py-2.5 bg-white text-[#07130e] rounded-2xl shadow-green-shadow font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[length:var(--brand-body-med-font-size)] tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)] z-10">
+                    {card.badgeText}
+                  </Badge>
+                  
+                  <Card className="w-full h-64 bg-[#052b21] rounded-2xl border-none flex items-center justify-center p-4">
+                    <CardContent className="p-0 flex items-center justify-center">
+                      <p className="font-brand-subtext font-[number:var(--brand-subtext-font-weight)] [font-style:var(--brand-subtext-font-style)] text-white text-[length:var(--brand-subtext-font-size)] text-center tracking-[var(--brand-subtext-letter-spacing)] leading-[var(--brand-subtext-line-height)]">
+                        {card.content}
+                      </p>
+                    </CardContent>
+                  </Card>
                 </div>
               ))}
             </div>

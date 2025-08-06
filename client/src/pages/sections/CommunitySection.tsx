@@ -29,7 +29,7 @@ export const CommunitySection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col w-full max-w-[1120px] items-center gap-[120px] mx-auto">
+    <section className="flex flex-col w-full max-w-[1120px] items-center gap-[120px] mx-auto px-6">
       <div className="w-full max-w-[837px] text-center">
         <h2 className="font-brand-h2 font-[number:var(--brand-h2-font-weight)] text-[#07130e] text-[length:var(--brand-h2-font-size)] tracking-[var(--brand-h2-letter-spacing)] leading-[var(--brand-h2-line-height)] [font-style:var(--brand-h2-font-style)] mb-[57px]">
           Community &amp; Open Science
@@ -79,21 +79,25 @@ export const CommunitySection = (): JSX.Element => {
 
                 <div className="flex flex-col items-center gap-3">
                   <div className="font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[#07130e] text-[length:var(--brand-body-med-font-size)] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]">
-                    {card.title.split("\n").map((line, i) => (
-                      <React.Fragment key={i}>
-                        {line}
-                        {i < card.title.split("\n").length - 1 && <br />}
-                      </React.Fragment>
-                    ))}
+                    <span>
+                      {card.title.split("\n").map((line, i) => (
+                        <span key={i}>
+                          {line}
+                          {i < card.title.split("\n").length - 1 && <br />}
+                        </span>
+                      ))}
+                    </span>
                   </div>
 
                   <div className="w-[265px] font-brand-body font-[number:var(--brand-body-font-weight)] text-[#4b5a56] text-[length:var(--brand-body-font-size)] text-center tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]">
-                    {card.description.split("\n").map((line, i) => (
-                      <React.Fragment key={i}>
-                        {line}
-                        {i < card.description.split("\n").length - 1 && <br />}
-                      </React.Fragment>
-                    ))}
+                    <span>
+                      {card.description.split("\n").map((line, i) => (
+                        <span key={i}>
+                          {line}
+                          {i < card.description.split("\n").length - 1 && <br />}
+                        </span>
+                      ))}
+                    </span>
                   </div>
                 </div>
               </CardContent>

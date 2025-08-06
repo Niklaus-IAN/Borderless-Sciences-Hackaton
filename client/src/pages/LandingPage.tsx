@@ -16,16 +16,36 @@ export const LandingPage = (): JSX.Element => {
     <div className="bg-white flex flex-col items-center w-full min-h-screen">
       <div className="bg-white w-full max-w-[1440px] relative">
         <NavigationBarSection />
-        <HeroBannerSection />
-        <MeetTheAISection />
-        <CoreFeaturesSection />
-        <HowItWorksSection />
-        <InformationGroupSection />
-        <CommunitySection />
-        <TestimonialsSection />
-        <CallToActionSection />
-        <ImageGallerySection />
-        <ImageWrapperSection />
+        <div className="py-8">
+          <HeroBannerSection />
+        </div>
+        <div className="py-12">
+          <MeetTheAISection />
+        </div>
+        <div className="py-12">
+          <CoreFeaturesSection />
+        </div>
+        <div className="py-12">
+          <HowItWorksSection />
+        </div>
+        <div className="py-12">
+          <InformationGroupSection />
+        </div>
+        <div className="py-12">
+          <CommunitySection />
+        </div>
+        <div className="py-12">
+          <TestimonialsSection />
+        </div>
+        <div className="py-8">
+          <CallToActionSection />
+        </div>
+        <div className="py-8">
+          <ImageGallerySection />
+        </div>
+        <div className="py-8">
+          <ImageWrapperSection />
+        </div>
       </div>
     </div>
   );
