@@ -26,52 +26,72 @@ export const MeetTheAISection = (): JSX.Element => {
 
   return (
     <section className="relative w-full py-16 bg-black">
-      <div className="relative mx-auto max-w-6xl px-6">
-        {/* Curved yellow banner with title */}
-        <div className="relative mb-12">
-          <div 
-            className="relative bg-[#e8e4a6] rounded-3xl px-8 py-6 transform -rotate-2 shadow-lg"
-            style={{
-              clipPath: 'polygon(0 20%, 15% 0%, 85% 0%, 100% 20%, 100% 80%, 85% 100%, 15% 100%, 0 80%)'
-            }}
-          >
-            <h2 className="text-4xl font-bold text-[#07130e] text-center leading-tight">
-              Meet the AI Revolutionizing<br />Herbal Research
-            </h2>
-          </div>
-        </div>
-
-        {/* 2x2 Grid of green cards */}
-        <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
-          {audienceCards.map((card, index) => (
-            <div
-              key={index}
-              className="relative flex flex-col items-center"
+      <div className="relative mx-auto max-w-7xl px-6">
+        {/* Main layout with left text and right cards */}
+        <div className="flex items-start gap-16">
+          {/* Left side - Curved yellow banner with text */}
+          <div className="flex-1 max-w-lg">
+            <div 
+              className="relative bg-[#e8e4a6] rounded-3xl px-8 py-12 shadow-lg mb-8"
+              style={{
+                clipPath: 'polygon(0 15%, 10% 0%, 90% 0%, 100% 15%, 100% 85%, 90% 100%, 10% 100%, 0 85%)',
+                transform: 'rotate(-2deg)'
+              }}
             >
-              {/* White badge header */}
-              <div className="bg-white text-[#07130e] px-6 py-3 rounded-2xl shadow-lg z-10 relative -mb-4 mx-auto">
-                <p className="text-sm font-medium text-center whitespace-nowrap">
-                  {card.badgeText}
-                </p>
-              </div>
-              
-              {/* Green card body */}
-              <Card className="w-full bg-[#0e7b5d] rounded-2xl border-none pt-8 pb-6 px-6 shadow-lg">
-                <CardContent className="p-0 text-center">
-                  <p className="text-white text-sm leading-relaxed">
-                    {card.content}
-                  </p>
-                </CardContent>
-              </Card>
+              <h2 className="text-4xl font-bold text-[#07130e] leading-tight">
+                Meet the AI Revolutionizing Herbal Research
+              </h2>
             </div>
-          ))}
-        </div>
+            
+            {/* Additional descriptive text */}
+            <div className="text-white space-y-4 ml-4">
+              <p className="text-lg leading-relaxed">
+                Borderless Science AI is a smart agent built to decode the science behind herbal medicine. 
+                It identifies a plant's active compounds, evaluates toxicity, and matches ingredients to 
+                scientifically backed treatments, all in seconds.
+              </p>
+              <p className="text-base leading-relaxed opacity-90">
+                Powered by advanced AI and secured with blockchain, it bridges ancient knowledge with 
+                cutting-edge science. In a world full of guesswork, Borderless brings clarity, safety, 
+                and proof to natural medicine.
+              </p>
+            </div>
+          </div>
 
-        {/* Get Started Button */}
-        <div className="flex justify-center">
-          <Button className="bg-[#0e7b5d] hover:bg-[#0c6b4d] text-white px-8 py-3 rounded-2xl font-medium">
-            Get Started
-          </Button>
+          {/* Right side - 2x2 Grid of green cards */}
+          <div className="flex-1 max-w-2xl">
+            <div className="grid grid-cols-2 gap-4">
+              {audienceCards.map((card, index) => (
+                <div
+                  key={index}
+                  className="relative flex flex-col"
+                >
+                  {/* White badge header */}
+                  <div className="bg-white text-[#07130e] px-4 py-2 rounded-2xl shadow-lg z-10 relative -mb-3 mx-auto max-w-fit">
+                    <p className="text-xs font-medium text-center whitespace-nowrap">
+                      {card.badgeText}
+                    </p>
+                  </div>
+                  
+                  {/* Green card body */}
+                  <Card className="w-full bg-[#0e7b5d] rounded-2xl border-none pt-6 pb-4 px-4 shadow-lg h-48">
+                    <CardContent className="p-0 text-center h-full flex items-center justify-center">
+                      <p className="text-white text-xs leading-relaxed">
+                        {card.content}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+            
+            {/* Get Started Button */}
+            <div className="flex justify-center mt-8">
+              <Button className="bg-[#0e7b5d] hover:bg-[#0c6b4d] text-white px-8 py-3 rounded-2xl font-medium">
+                Get Started
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
