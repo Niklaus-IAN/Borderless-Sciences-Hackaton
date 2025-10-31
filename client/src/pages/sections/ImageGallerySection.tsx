@@ -23,8 +23,13 @@ export const ImageGallerySection = (): JSX.Element => {
           <Card className="bg-[#daece3] rounded-2xl border-none flex-1">
             <CardContent className="p-0">
               <Input
-                className="border-none bg-transparent h-[47px] px-6 py-3 font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[#b4d6cd] text-[length:var(--brand-body-med-font-size)] tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]"
-                placeholder="Enter your email"
+                className="border-none bg-transparent h-[47px] px-6 py-3 
+             font-brand-body-med font-[number:var(--brand-body-med-font-weight)] 
+             text-black text-[length:var(--brand-body-med-font-size)] 
+             tracking-[var(--brand-body-med-letter-spacing)] 
+             leading-[var(--brand-body-med-line-height)] 
+             [font-style:var(--brand-body-med-font-style)] 
+             focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none shadow-none"
               />
             </CardContent>
           </Card>

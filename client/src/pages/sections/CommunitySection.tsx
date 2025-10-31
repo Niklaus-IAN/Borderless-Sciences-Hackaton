@@ -29,13 +29,13 @@ export const CommunitySection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col w-full max-w-[1120px] items-center gap-[120px] mx-auto px-6">
+    <section className="flex flex-col w-full px-[148px] items-center gap-[120px] mx-auto mt-24">
       <div className="w-full max-w-[837px] text-center">
         <h2 className="font-brand-h2 font-[number:var(--brand-h2-font-weight)] text-[#07130e] text-[length:var(--brand-h2-font-size)] tracking-[var(--brand-h2-letter-spacing)] leading-[var(--brand-h2-line-height)] [font-style:var(--brand-h2-font-style)] mb-[57px]">
           Community &amp; Open Science
         </h2>
 
-        <p className="font-brand-body font-[number:var(--brand-body-font-weight)] text-[#07130e] text-[length:var(--brand-body-font-size)] text-center tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]">
+        <p className="font-brand-body font-[number:var(--brand-body-font-weight)] text-[#07130e]/70 text-[length:var(--brand-body-font-size)] text-center tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]">
           We&apos;re building an open science ecosystem where herbal
           researchers, traditional medicine practitioners, <br />
           and citizen scientists unite. As a part of the Borderless Science DAO,
@@ -45,22 +45,22 @@ export const CommunitySection = (): JSX.Element => {
       </div>
 
       <div className="w-full max-w-[1120px]">
-        <div className="w-full max-w-[776px] mx-auto mb-[50px] text-center">
+        <div className="w-full mx-auto mb-[50px] text-center">
           <h2 className="font-brand-h2 font-[number:var(--brand-h2-font-weight)] text-[#07130e] text-[length:var(--brand-h2-font-size)] tracking-[var(--brand-h2-letter-spacing)] leading-[var(--brand-h2-line-height)] [font-style:var(--brand-h2-font-style)]">
             Borderless isn&apos;t just a tool, it&apos;s a movement
           </h2>
 
-          <p className="mt-[57px] font-brand-body font-[number:var(--brand-body-font-weight)] text-[#07130e] text-[length:var(--brand-body-font-size)] text-center tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]">
+          <p className="mt-[57px] font-brand-body font-[number:var(--brand-body-font-weight)] text-[#07130e]/70 text-[length:var(--brand-body-font-size)] text-center tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]">
             Let&apos;s make science transparent, inclusive, and truly
             borderless.
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex items-center justify-center gap-8">
           {communityCards.map((card, index) => (
             <Card
               key={`community-card-${index}`}
-              className="flex flex-col w-[352px] items-center justify-center gap-6 px-11 py-[38px] bg-[#daece3] rounded-2xl overflow-hidden"
+              className="flex flex-col w-auto items-center justify-center gap-6 px-11 py-[38px] bg-[#daece3] rounded-2xl overflow-hidden"
             >
               <CardContent className="flex flex-col items-center justify-center gap-6 p-0">
                 <div className="flex w-[58px] h-[58px] items-center justify-center gap-2.5 p-[11px] bg-white rounded-2xl">
@@ -78,7 +78,7 @@ export const CommunitySection = (): JSX.Element => {
                 </div>
 
                 <div className="flex flex-col items-center gap-3">
-                  <div className="font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[#07130e] text-[length:var(--brand-body-med-font-size)] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]">
+                  <div className="font-brand-body-med font-bold text-[#07130e] text-[length:var(--brand-body-med-font-size)] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]">
                     <span>
                       {card.title.split("\n").map((line, i) => (
                         <span key={i}>
@@ -94,7 +94,9 @@ export const CommunitySection = (): JSX.Element => {
                       {card.description.split("\n").map((line, i) => (
                         <span key={i}>
                           {line}
-                          {i < card.description.split("\n").length - 1 && <br />}
+                          {i < card.description.split("\n").length - 1 && (
+                            <br />
+                          )}
                         </span>
                       ))}
                     </span>
