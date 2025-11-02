@@ -10,40 +10,44 @@ import { InformationGroupSection } from "./sections/InformationGroupSection";
 import { MeetTheAISection } from "./sections/MeetTheAISection";
 import { NavigationBarSection } from "./sections/NavigationBarSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
+import { ShapeTheFutureSection } from "./sections/ShapeTheFutureSection";
 
 export const LandingPage = (): JSX.Element => {
   return (
     <div className="bg-white flex flex-col items-center w-full min-h-screen">
-      <div className="bg-white w-full max-w-[1440px] relative">
+      <div className="bg-white w-full relative">
         <NavigationBarSection />
         <div className="py-8">
           <HeroBannerSection />
         </div>
-        <div className="py-12">
-          <MeetTheAISection />
-        </div>
-        <div className="py-12">
-          <CoreFeaturesSection />
-        </div>
-        <div className="py-12">
+        <div className="py-16">
           <HowItWorksSection />
         </div>
-        <div className="py-12">
+        <div className="py-16">
+          <CoreFeaturesSection />
+        </div>
+        <div className="py-24">
+          <MeetTheAISection />
+        </div>
+        <div className="py-16">
           <InformationGroupSection />
         </div>
-        <div className="py-12">
+        <div className="py-16">
           <CommunitySection />
         </div>
-        <div className="py-12">
+        <div className="py-16">
+          <ShapeTheFutureSection />
+        </div>
+        <div className="py-26">
           <TestimonialsSection />
         </div>
-        <div className="py-8">
+        <div className="py-16 px-[140px]">
           <CallToActionSection />
         </div>
-        <div className="py-8">
+        <div className="pt-32">
           <ImageGallerySection />
         </div>
-        <div className="py-8">
+        <div className="pt-[1px]">
           <ImageWrapperSection />
         </div>
       </div>
