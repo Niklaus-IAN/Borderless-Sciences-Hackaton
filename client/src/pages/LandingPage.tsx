@@ -17,7 +17,7 @@ export const LandingPage = (): JSX.Element => {
     <div className="bg-white flex flex-col items-center w-full min-h-screen">
       <div className="bg-white w-full relative">
         <NavigationBarSection />
-        <div className="py-8">
+        <div className="mt-28 py-8">
           <HeroBannerSection />
         </div>
         <div className="py-16" id="how-it-works">

@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "wouter";
 
 export const HowItWorksSection = (): JSX.Element => {
   // Define the step cards data for easier mapping
@@ -126,11 +127,13 @@ export const HowItWorksSection = (): JSX.Element => {
               how to use it, step by step.
             </p>
 
-            <Button className="mt-12 bg-[#0e7b5d] text-white rounded-3xl hover:bg-[#0a6a50]/70 transition-all w-[180px] h-[47px] flex items-center justify-center">
-              <span className="font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-white text-[[length:var(--brand-body-med-font-size)]] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] whitespace-nowrap [font-style:var(--brand-body-med-font-style)]">
-                Run a Sample Test
-              </span>
-            </Button>
+            <Link href="/chat">
+              <Button className="mt-12 bg-[#0e7b5d] text-white rounded-3xl hover:bg-[#0a6a50]/70 transition-all w-[180px] h-[47px] flex items-center justify-center">
+                <span className="font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-white text-[[length:var(--brand-body-med-font-size)]] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] whitespace-nowrap [font-style:var(--brand-body-med-font-style)]">
+                  Run a Sample Test
+                </span>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
