@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "wouter";
 
 export const MeetTheAISection = (): JSX.Element => {
   // Data for the audience cards
@@ -101,9 +102,11 @@ export const MeetTheAISection = (): JSX.Element => {
 
             {/* Get Started Button */}
             <div className="flex justify-center mt-10">
-              <Button className="bg-[#0e7b5d] text-white rounded-[20px] hover:bg-[#0a6a50]/70 transition-all w-[132px] h-[47px] flex items-center justify-center">
-                <span>Get Started</span>
-              </Button>
+              <Link href="/chat">
+                <Button className="bg-[#0e7b5d] text-white rounded-[20px] hover:bg-[#0a6a50]/70 transition-all w-[132px] h-[47px] flex items-center justify-center">
+                  <span>Get Started</span>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

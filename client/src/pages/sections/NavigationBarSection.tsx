@@ -21,7 +21,7 @@ export const NavigationBarSection = (): JSX.Element => {
   ];
 
   return (
-    <header className="w-full flex justify-center bg-[#f6fff8] py-6 px-4 md:px-8 lg:px-[133px]">
+    <header className="fixed top-0 left-0 w-full z-50 flex justify-center bg-[#f6fff8]/90 backdrop-blur-md py-6 px-4 md:px-8 lg:px-[133px] shadow-sm">
       <nav className="flex items-center justify-between w-full gap-4 md:gap-8 lg:gap-[197px]">
         {/* Logo section */}
         <div className="flex items-center gap-3">
@@ -66,13 +66,12 @@ export const NavigationBarSection = (): JSX.Element => {
         </div>
 
         {/* Sign Up button */}
-        <Link
-          href="/chat"
-          className="bg-[#0e7b5d] w-[135px] h-[47px] text-white rounded-2xl shadow-[inset_3px_3px_7px_#084a38,inset_-3px_-3px_7px_#084a38] hover:bg-[#0e7b5d]/90 flex items-center justify-center"
-        >
-          <span className="font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[length:var(--brand-body-med-font-size)] tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]">
-            Launch App
-          </span>
+        <Link href="/chat">
+          <Button className="bg-[#0e7b5d] w-[135px] h-[47px] text-white rounded-2xl shadow-[inset_3px_3px_7px_#084a38,inset_-3px_-3px_7px_#084a38] hover:bg-[#0e7b5d]/90 flex items-center justify-center">
+            <span className="font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[length:var(--brand-body-med-font-size)] tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]">
+              Launch App
+            </span>
+          </Button>
         </Link>
       </nav>
     </header>
