@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 export const CallToActionSection = (): JSX.Element => {
   return (
@@ -16,9 +17,11 @@ export const CallToActionSection = (): JSX.Element => {
           </p>
         </div>
 
-        <Button className="text-[#0e7b5d] bg-white rounded-2xl hover:bg-white/90  hover:text-black transition-all w-[144px] h-[47px] flex items-center justify-center border border-[#0e7b5d]">
-          <span>Try it Now</span>
-        </Button>
+        <Link href="/chat">
+          <Button className="text-[#0e7b5d] bg-white rounded-2xl hover:bg-white/90  hover:text-black transition-all w-[144px] h-[47px] flex items-center justify-center border border-[#0e7b5d]">
+            <span>Try it Now</span>
+          </Button>
+        </Link>
       </div>
     </div>
   );

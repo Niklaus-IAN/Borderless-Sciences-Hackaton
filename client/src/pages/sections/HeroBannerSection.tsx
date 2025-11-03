@@ -1,9 +1,14 @@
 import React from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
 export const HeroBannerSection = (): JSX.Element => {
+  const handleScroll = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section className="flex flex-col w-full max-w-[1084px] items-center gap-[30px] mx-auto mt-8">
       <div className="flex flex-col items-center justify-center gap-2">
@@ -38,7 +43,10 @@ export const HeroBannerSection = (): JSX.Element => {
           </Button>
         </Link>
 
-        <Button className="text-[#0e7b5d] bg-white rounded-3xl hover:bg-[#0e7b5d]/10 transition-all w-[144px] h-[47px] flex items-center justify-center border border-[#0e7b5d]">
+        <Button
+          onClick={() => handleScroll("how-it-works")}
+          className="text-[#0e7b5d] bg-white rounded-3xl hover:bg-[#0e7b5d]/10 transition-all w-[144px] h-[47px] flex items-center justify-center border border-[#0e7b5d]"
+        >
           <span>How it Works</span>
         </Button>
       </div>

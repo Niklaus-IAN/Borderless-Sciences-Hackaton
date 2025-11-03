@@ -39,7 +39,7 @@ export const ImageWrapperSection = (): JSX.Element => {
                 <a
                   key={index}
                   href="#"
-                  className="text-sm text-[#07130e] hover:text-[#0e7b5d]  transition-colors duration-300"
+                  className="text-sm text-[#07130e] hover:text-[#0e7b5d] hover:underline transition-colors duration-300"
                 >
                   {link}
                 </a>
@@ -58,22 +58,22 @@ export const ImageWrapperSection = (): JSX.Element => {
           {/* Social media */}
           <div className="flex items-center gap-5 translate-y-6">
             <img
-              className="h-4 w-4 cursor-pointer"
+              className="h-4 w-4 cursor-pointer hover:scale-110 transition-transform"
               alt="Social media links"
               src="/icons/github-icon.svg"
             />
             <img
-              className="h-4 w-4 cursor-pointer"
+              className="h-4 w-4 cursor-pointer hover:scale-110 transition-transform"
               alt="Social media links"
               src="/icons/discord-icon.svg"
             />
             <img
-              className="h-4 w-4 cursor-pointer"
+              className="h-4 w-4 cursor-pointer hover:scale-110 transition-transform"
               alt="Social media links"
               src="/icons/twitter-icon.svg"
             />
             <img
-              className="h-4 w-4 cursor-pointer"
+              className="h-4 w-4 cursor-pointer hover:scale-110 transition-transform"
               alt="Social media links"
               src="/icons/linkedIn-icon.svg"
             />

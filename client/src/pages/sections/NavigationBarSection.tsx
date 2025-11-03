@@ -5,16 +5,20 @@ import { Button } from "@/components/ui/button";
 export const NavigationBarSection = (): JSX.Element => {
   const [location] = useLocation();
 
+  const handleScroll = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   // Navigation menu items data
   const navItems = [
     { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
-    { label: "How it works", path: "/how-it-works" },
-    { label: "Community", path: "/community" },
+    { label: "About", path: "about" },
+    { label: "How it works", path: "how-it-works" },
+    { label: "Community", path: "community" },
   ];
-
-  // Add pages that are ready / exist
-  const existingPaths = ["/"]; // update this when you create more pages
 
   return (
     <header className="w-full flex justify-center bg-[#f6fff8] py-6 px-4 md:px-8 lg:px-[133px]">
@@ -35,38 +39,41 @@ export const NavigationBarSection = (): JSX.Element => {
 
         {/* Navigation menu */}
         <div className="flex flex-1 max-w-[469px] h-[60px] items-center justify-center bg-[#E7F3ED] rounded-2xl">
-          <div className="flex items-center justify-between gap-2.5 px-2.5 overflow-x-auto">
+          <div className="flex items-center justify-between gap-2.5 px-2.5">
             {navItems.map((item, index) => {
               const isActive = location === item.path;
-              const isDisabled = !existingPaths.includes(item.path);
-
               return (
-                <Link
+                <Button
                   key={index}
-                  href={isDisabled ? "#" : item.path}
-                  onClick={(e) => isDisabled && e.preventDefault()}
+                  onClick={() =>
+                    item.path === "/"
+                      ? (window.location.href = "/")
+                      : handleScroll(item.path)
+                  }
+                  className={`flex items-center justify-center px-5 py-2.5 rounded-[14px] whitespace-nowrap transition-all duration-200 text-[#07130E] bg-[#E7F3ED] focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none border-none shadow-none ${
+                    isActive
+                      ? "bg-white/40 hover:bg-white/40"
+                      : "hover:bg-black/50 hover:text-white"
+                  }`}
                 >
-                  <a
-                    className={`flex items-center justify-center px-5 py-2.5 rounded-[14px] whitespace-nowrap transition-all duration-200 text-[#07130E] ${
-                      isActive ? "bg-white/40" : "hover:bg-white/40"
-                    }`}
-                  >
-                    <span className="font-brand-body font-[number:var(--brand-body-font-weight)] text-[length:var(--brand-body-font-size)] tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]">
-                      {item.label}
-                    </span>
-                  </a>
-                </Link>
+                  <span className="font-brand-body font-[number:var(--brand-body-font-weight)] text-[length:var(--brand-body-font-size)] tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]">
+                    {item.label}
+                  </span>
+                </Button>
               );
             })}
           </div>
         </div>
 
         {/* Sign Up button */}
-        <Button className="bg-[#0e7b5d] w-[135px] h-[47px] text-white rounded-2xl shadow-[inset_3px_3px_7px_#084a38,inset_-3px_-3px_7px_#084a38] hover:bg-[#0e7b5d]/90">
+        <Link
+          href="/chat"
+          className="bg-[#0e7b5d] w-[135px] h-[47px] text-white rounded-2xl shadow-[inset_3px_3px_7px_#084a38,inset_-3px_-3px_7px_#084a38] hover:bg-[#0e7b5d]/90 flex items-center justify-center"
+        >
           <span className="font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-[length:var(--brand-body-med-font-size)] tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]">
-            Sign Up
+            Launch App
           </span>
-        </Button>
+        </Link>
       </nav>
     </header>
   );

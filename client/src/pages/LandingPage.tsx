@@ -20,19 +20,19 @@ export const LandingPage = (): JSX.Element => {
         <div className="py-8">
           <HeroBannerSection />
         </div>
-        <div className="py-16">
+        <div className="py-16" id="how-it-works">
           <HowItWorksSection />
         </div>
         <div className="py-16">
           <CoreFeaturesSection />
         </div>
-        <div className="py-24">
+        <div className="py-24" id="about">
           <MeetTheAISection />
         </div>
         <div className="py-16">
           <InformationGroupSection />
         </div>
-        <div className="py-16">
+        <div className="py-16" id="community">
           <CommunitySection />
         </div>
         <div className="py-16">
@@ -47,7 +47,7 @@ export const LandingPage = (): JSX.Element => {
         <div className="pt-32">
           <ImageGallerySection />
         </div>
-        <div className="pt-[1px]">
+        <div className="pt-[2px]">
           <ImageWrapperSection />
         </div>
       </div>
