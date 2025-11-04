@@ -19,12 +19,20 @@ export const ShapeTheFutureSection = (): JSX.Element => {
     >
       <div className="flex items-center justify-between">
         {/* Left Section */}
-        <div className="min-w-[479px] h-[405px]">
+        <div className="min-w-[479px] h-[405px] relative">
           <img
             className="w-full h-full"
             src="/figmaAssets/coming-soon.png"
             alt="coming-soon-image"
           />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <img
+              src="/icons/spinner.svg"
+              alt="spinner"
+              className="w-[125px] h-[125px] animate-spin"
+              style={{ animationDuration: "3s" }}
+            />
+          </div>
         </div>
 
         {/* Right Section */}
