@@ -8,6 +8,14 @@ export type TabType =
   | "my_records"
   | "all_records";
 
+export type ChatTabType =
+  | "specimen"
+  | "compounds"
+  | "toxicities"
+  | "botanicals"
+  | "ailments"
+  | "comparisons";
+
 export type CommonSidebarProps = {
   sidebarShown: boolean;
   setSidebarShown: React.Dispatch<React.SetStateAction<boolean>>;
