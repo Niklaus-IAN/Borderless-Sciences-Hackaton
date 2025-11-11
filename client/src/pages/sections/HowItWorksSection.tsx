@@ -1,26 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 
 export const HowItWorksSection = (): JSX.Element => {
+  const [activeIndex, setActiveIndex] = useState(0);
   // Define the step cards data for easier mapping
   const stepCards = [
     {
+      title: "Input your specimen",
+      isTwoLines: false,
+      content: {
+        heading: "Input Your Specimen",
+        sentence:
+          "Tell us about your plant: upload an image, enter the name, or describe the preparation. Whether it's a local root blend or a single herb, we’ll take it from there.",
+        image: "/figmaAssets/how-it-works-1.png",
+      },
+    },
+    {
       title: "AI Analyzes the Profile",
       isTwoLines: false,
+      content: {
+        heading: "AI Analyzes the Profile",
+        sentence:
+          "Borderless runs a deep scan of the specimen using advanced AI models, mapping its chemical profile and checking it against global research datasets.",
+        image: "/figmaAssets/how-it-works-2.png",
+      },
     },
     {
       title: "Review Your Compound Breakdown",
       isTwoLines: true,
+      content: {
+        heading: "Review Your Compound Breakdown",
+        sentence:
+          "You get a full report showing the key compounds in your herb, their functions, percentages, potential risks, and how they interact.",
+        image: "/figmaAssets/how-it-works-3.png",
+      },
     },
     {
       title: "Get Treatment Comparisons",
       isTwoLines: false,
+      content: {
+        heading: "Get Treatment Comparisons",
+        sentence:
+          "See how your natural remedy stacks up against pharmaceuticals. We surface similar treatments, clinical insights, and use cases side-by-side.",
+        image: "/figmaAssets/how-it-works-4.png",
+      },
     },
     {
       title: "Log Results On-Chain",
       isTwoLines: false,
+      content: {
+        heading: "Log Results On-Chain",
+        sentence:
+          "Preserve your findings on the SEI blockchain. Whether you're building IP, protecting indigenous knowledge, or logging results, your data stays traceable and secure.",
+        image: "/figmaAssets/how-it-works-5.png",
+      },
     },
   ];
 
@@ -30,81 +65,67 @@ export const HowItWorksSection = (): JSX.Element => {
         <div className="flex flex-col lg:flex-row items-center justify-between lg:gap-16 max-w-7xl mx-auto px-4">
           {/* Left side - Process steps */}
           <div className="w-full lg:flex-1 lg:max-w-lg">
-            {/* Input Your Specimen Card */}
-            <Card className="w-[478px] mb-6 bg-[#daece3] rounded-3xl border-none">
-              <CardContent className="p-0">
-                <div className="p-11">
-                  <h3 className="font-brand-h3 font-[number:var(--brand-h3-font-weight)] text-[#052b21] text-[length:var(--brand-h3-font-size)] text-center tracking-[var(--brand-h3-letter-spacing)] leading-[var(--brand-h3-line-height)] [font-style:var(--brand-h3-font-style)]">
-                    Input Your Specimen
-                  </h3>
-                  <p className="mt-4 font-brand-subtext font-[number:var(--brand-subtext-font-weight)] [font-style:var(--brand-subtext-font-style)] text-[#052b21] text-[length:var(--brand-subtext-font-size)] tracking-[var(--brand-subtext-letter-spacing)] leading-[var(--brand-subtext-line-height)]">
-                    Tell us about your plant: upload an image, enter the name,{" "}
-                    <br />
-                    or describe the preparation. Whether it&#39;s a local root
-                    blend <br />
-                    or a single herb, we&apos;ll take it from there.
-                  </p>
-                </div>
-
-                <div className="relative w-full h-[146px]">
-                  <div className="absolute w-[388px] h-[146px] top-0 left-1/2 -translate-x-1/2 bg-white rounded-[25px] shadow-shadow-for-tiny-interface">
-                    <div className="relative w-[338px] h-[42px] top-[31px] left-[25px]">
-                      <div className="flex flex-col w-[292px] h-[42px] items-start gap-2.5 px-[21px] py-[9px] absolute top-0 left-0 bg-[#b4d6cd] rounded-3xl">
-                        <div className="flex w-[247px] items-center justify-between relative flex-[0_0_auto]">
-                          <div className="relative w-fit font-brand-body font-[number:var(--brand-body-font-weight)] text-[#e7f2ef] text-[length:var(--brand-body-font-size)] tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] whitespace-nowrap [font-style:var(--brand-body-font-style)]">
-                            Type anything
-                          </div>
-
-                          <img
-                            className="relative w-6 h-6"
-                            alt="Attachment icon"
-                            src="/figmaAssets/iconamoon-attachment-fill.svg"
-                          />
-                        </div>
-                      </div>
-
-                      <img
-                        className="absolute w-[42px] h-[42px] top-0 left-[296px]"
-                        alt="Send icon"
-                        src="/figmaAssets/send-icon.svg"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="absolute w-full h-[41px] bottom-0 left-0 bg-[#daece3] rounded-[0px_0px_24px_24px] blur-[4.5px]" />
-                </div>
-              </CardContent>
-            </Card>
-
             {/* Process Step Cards */}
-            {stepCards.map((step, index) => (
-              <Card
-                key={`step-${index}`}
-                className="w-[478px] mb-6 bg-[#052b21] rounded-3xl border-none"
-              >
-                <CardContent className="flex items-center p-0 h-[120px]">
-                  <img
-                    className="w-[50px] h-[50px] ml-[52px]"
-                    alt="Arrow"
-                    src="/figmaAssets/arrow.svg"
-                  />
-                  <div
-                    className={`ml-[35px] font-brand-h3 font-[number:var(--brand-h3-font-weight)] text-white text-[length:var(--brand-h3-font-size)] ${
-                      step.isTwoLines ? "" : "text-center"
-                    } tracking-[var(--brand-h3-letter-spacing)] leading-[var(--brand-h3-line-height)] [font-style:var(--brand-h3-font-style)]`}
-                  >
-                    {step.title.includes("Breakdown") ? (
-                      <>
-                        Review Your Compound <br />
-                        Breakdown
-                      </>
-                    ) : (
-                      step.title
+            <>
+              {stepCards.map((step, index) => {
+                const isActive = index === activeIndex;
+
+                return (
+                  <div key={`step-wrapper-${index}`}>
+                    {/* CARD — visible only when NOT active */}
+                    {!isActive && (
+                      <Card
+                        key={`step-${index}`}
+                        className="w-[478px] mb-6 bg-[#052b21] rounded-3xl border-none cursor-pointer"
+                        onClick={() => setActiveIndex(index)}
+                      >
+                        <CardContent className="flex items-center p-0 h-[120px]">
+                          <img
+                            className="w-[50px] h-[50px] ml-[52px]"
+                            alt="Arrow"
+                            src="/figmaAssets/arrow.svg"
+                          />
+
+                          <div
+                            className={`ml-[35px] font-brand-h3 font-[number:var(--brand-h3-font-weight)] text-white text-[length:var(--brand-h3-font-size)] ${
+                              step.isTwoLines ? "" : "text-center"
+                            } tracking-[var(--brand-h3-letter-spacing)] leading-[var(--brand-h3-line-height)] [font-style:var(--brand-h3-font-style)]`}
+                          >
+                            {step.title.includes("Breakdown") ? (
+                              <>
+                                Review Your Compound <br />
+                                Breakdown
+                              </>
+                            ) : (
+                              step.title
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    )}
+
+                    {/* CONTENT — visible only when ACTIVE */}
+                    {isActive && (
+                      <div className="bg-[#DAECE3] w-[478px] px-10 pt-10 rounded-[24px] mb-4">
+                        <h4 className="text-[#052B21] font-medium text-[24px] mb-2">
+                          {step.content.heading}
+                        </h4>
+
+                        <p className="text-[#052B21] font-medium text-[14px] mb-6 leading-[20px]">
+                          {step.content.sentence}
+                        </p>
+
+                        <img
+                          className="min-w-full"
+                          src={step.content.image}
+                          alt={`image ${index}`}
+                        />
+                      </div>
                     )}
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                );
+              })}
+            </>
           </div>
 
           {/* Right side - Heading and CTA */}
@@ -128,7 +149,7 @@ export const HowItWorksSection = (): JSX.Element => {
             </p>
 
             <Link href="/chat">
-              <Button className="mt-12 bg-[#0e7b5d] text-white rounded-3xl hover:bg-[#0a6a50]/70 transition-all w-[180px] h-[47px] flex items-center justify-center">
+              <Button className="mt-12 bg-[#0e7b5d] shadow-[inset_3px_3px_7px_#084a38,inset_-3px_-3px_7px_#084a38] text-white rounded-[16px] hover:bg-[#0a6a50]/70 transition-all w-[180px] h-[47px] flex items-center justify-center">
                 <span className="font-brand-body-med font-[number:var(--brand-body-med-font-weight)] text-white text-[[length:var(--brand-body-med-font-size)]] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] whitespace-nowrap [font-style:var(--brand-body-med-font-style)]">
                   Run a Sample Test
                 </span>

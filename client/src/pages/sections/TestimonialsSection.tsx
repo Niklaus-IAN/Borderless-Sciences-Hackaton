@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const TestimonialsSection = (): JSX.Element => {
-  // Testimonial data for mapping
-  const testimonials = [
+  const originalTestimonials = [
     {
       quote:
         '"This is exactly what I\'ve been waiting for. Borderless gives me a clean, credible breakdown of plant compounds, no more guesswork, no expensive lab needed."',
@@ -27,12 +26,34 @@ export const TestimonialsSection = (): JSX.Element => {
     },
   ];
 
-  // Pagination indicators
-  const paginationDots = [
-    { active: true },
-    { active: false },
-    { active: false },
-  ];
+  const [activeDot, setActiveDot] = useState(0);
+
+  // Reordering logic based on dot clicked
+  const reorder = (index: number) => {
+    if (index === 0) return originalTestimonials;
+
+    if (index === 1) {
+      // second dot clicked
+      return [
+        originalTestimonials[1], // second becomes first
+        originalTestimonials[0], // first becomes second
+        originalTestimonials[2], // third stays same
+      ];
+    }
+
+    if (index === 2) {
+      // third dot clicked
+      return [
+        originalTestimonials[1], // second becomes first
+        originalTestimonials[2], // third becomes second
+        originalTestimonials[0], // first becomes third
+      ];
+    }
+
+    return originalTestimonials;
+  };
+
+  const testimonials = reorder(activeDot);
 
   return (
     <section className="flex flex-col items-center justify-center gap-10 w-full px-[140px] mt-60">
@@ -73,12 +94,14 @@ export const TestimonialsSection = (): JSX.Element => {
           ))}
         </div>
 
+        {/* Pagination Dots */}
         <div className="flex justify-center items-center gap-5 mt-10">
-          {paginationDots.map((dot, index) => (
-            <div
+          {[0, 1, 2].map((dot, index) => (
+            <button
               key={index}
-              className={`w-[25px] h-[25px] rounded-full ${
-                dot.active ? "bg-[#0e7b5d]" : "bg-[#fff3e0]"
+              onClick={() => setActiveDot(index)}
+              className={`w-[25px] h-[25px] rounded-full transition-all ${
+                activeDot === index ? "bg-[#0e7b5d]" : "bg-[#fff3e0]"
               }`}
             />
           ))}

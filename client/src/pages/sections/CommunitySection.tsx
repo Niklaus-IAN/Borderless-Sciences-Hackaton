@@ -60,7 +60,7 @@ export const CommunitySection = (): JSX.Element => {
           {communityCards.map((card, index) => (
             <Card
               key={`community-card-${index}`}
-              className="flex flex-col w-auto items-center justify-center gap-6 px-11 py-[38px] bg-[#daece3] rounded-2xl overflow-hidden"
+              className="group flex flex-col w-auto items-center justify-center gap-6 px-11 py-[38px] bg-[#daece3] hover:bg-[#052B21] rounded-2xl overflow-hidden transition-all"
             >
               <CardContent className="flex flex-col items-center justify-center gap-6 p-0">
                 <div className="flex w-[58px] h-[58px] items-center justify-center gap-2.5 p-[11px] bg-white rounded-2xl">
@@ -78,7 +78,7 @@ export const CommunitySection = (): JSX.Element => {
                 </div>
 
                 <div className="flex flex-col items-center gap-3">
-                  <div className="font-brand-body-med font-bold text-[#07130e] text-[length:var(--brand-body-med-font-size)] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]">
+                  <div className="font-brand-body-med font-bold text-[#07130e] group-hover:text-white text-[length:var(--brand-body-med-font-size)] text-center tracking-[var(--brand-body-med-letter-spacing)] leading-[var(--brand-body-med-line-height)] [font-style:var(--brand-body-med-font-style)]">
                     <span>
                       {card.title.split("\n").map((line, i) => (
                         <span key={i}>
@@ -89,7 +89,7 @@ export const CommunitySection = (): JSX.Element => {
                     </span>
                   </div>
 
-                  <div className="w-[265px] font-brand-body font-[number:var(--brand-body-font-weight)] text-[#4b5a56] text-[length:var(--brand-body-font-size)] text-center tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]">
+                  <div className="w-[265px] font-brand-body font-[number:var(--brand-body-font-weight)] text-[#4b5a56] group-hover:text-[#DAECE3] text-[length:var(--brand-body-font-size)] text-center tracking-[var(--brand-body-letter-spacing)] leading-[var(--brand-body-line-height)] [font-style:var(--brand-body-font-style)]">
                     <span>
                       {card.description.split("\n").map((line, i) => (
                         <span key={i}>
