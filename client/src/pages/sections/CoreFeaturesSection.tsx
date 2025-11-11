@@ -274,7 +274,7 @@ export const CoreFeaturesSection = (): JSX.Element => {
 
                     <div className="flex-shrink-0 ml-8">
                       <img
-                        className="w-[320px] h-[220px] object-cover rounded-xl shadow-lg"
+                        className="w-[430px] h-[256px] object-cover rounded-xl shadow-lg"
                         alt={`${feature.heading} illustration`}
                         src={feature.image}
                       />
