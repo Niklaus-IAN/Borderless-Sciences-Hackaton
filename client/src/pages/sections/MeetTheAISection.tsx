@@ -103,7 +103,7 @@ export const MeetTheAISection = (): JSX.Element => {
             {/* Get Started Button */}
             <div className="flex justify-center mt-10">
               <Link href="/chat">
-                <Button className="bg-[#0e7b5d] text-white rounded-[20px] hover:bg-[#0a6a50]/70 transition-all w-[132px] h-[47px] flex items-center justify-center">
+                <Button className="bg-[#0e7b5d] shadow-[inset_3px_3px_7px_#084a38,inset_-3px_-3px_7px_#084a38] text-white rounded-[16px] hover:bg-[#0a6a50]/70 transition-all w-[132px] h-[47px] flex items-center justify-center">
                   <span>Get Started</span>
                 </Button>
               </Link>

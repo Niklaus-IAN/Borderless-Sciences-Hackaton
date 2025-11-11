@@ -38,14 +38,14 @@ export const HeroBannerSection = (): JSX.Element => {
 
       <div className="flex items-center justify-center gap-2">
         <Link href="/chat">
-          <Button className="bg-[#0e7b5d] text-white rounded-3xl hover:bg-[#0a6a50]/70 transition-all w-[122px] h-[47px] flex items-center justify-center">
+          <Button className="bg-[#0e7b5d] shadow-[inset_3px_3px_7px_#084a38,inset_-3px_-3px_7px_#084a38] text-white rounded-xl hover:bg-[#0a6a50]/70 transition-all w-[122px] h-[47px] flex items-center justify-center">
             <span>Try it Now</span>
           </Button>
         </Link>
 
         <Button
           onClick={() => handleScroll("how-it-works")}
-          className="text-[#0e7b5d] bg-white rounded-3xl hover:bg-[#0e7b5d]/10 transition-all w-[144px] h-[47px] flex items-center justify-center border border-[#0e7b5d]"
+          className="text-[#0e7b5d] bg-white rounded-xl hover:bg-[#0e7b5d]/10 transition-all w-[144px] h-[47px] flex items-center justify-center border border-[#0e7b5d]"
         >
           <span>How it Works</span>
         </Button>
