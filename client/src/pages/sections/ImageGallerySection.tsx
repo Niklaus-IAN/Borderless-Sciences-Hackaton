@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
 export const ImageGallerySection = (): JSX.Element => {
+  const [inputValue, setInputValue] = useState("");
+
   return (
     <section className="w-full py-24 bg-[#b4d6cd]">
       <div className="container flex flex-col items-center justify-center max-w-[1440px] mx-auto">
@@ -23,6 +25,10 @@ export const ImageGallerySection = (): JSX.Element => {
           <Card className="bg-[#daece3] rounded-2xl border-none flex-1">
             <CardContent className="p-0">
               <Input
+                type="email"
+                placeholder="Enter Your Email"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
                 className="border-none bg-transparent h-[47px] px-6 py-3 
              font-brand-body-med font-[number:var(--brand-body-med-font-weight)] 
              text-black text-[length:var(--brand-body-med-font-size)] 
