@@ -92,7 +92,7 @@ const ResultPage: React.FC<ResultPageProps> = ({
             renderContent()
           ) : (
             <div className="w-full h-[300px] flex items-center justify-center">
-              An error occured
+              An error occured, please try again later.
             </div>
           )}
         </>
