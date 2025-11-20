@@ -57,7 +57,7 @@ const ResultPage: React.FC<ResultPageProps> = ({
       </div>
 
       <div>
-        {!loading && data?.success !== false && (
+        {!loading && data && data?.success !== false && (
           <div className="flex items-center justify-between gap-3 mb-7">
             {tabs.map((tab, index) => (
               <div
@@ -88,7 +88,7 @@ const ResultPage: React.FC<ResultPageProps> = ({
                 style={{ animationDuration: "2s" }}
               />
             </div>
-          ) : data?.success !== false ? (
+          ) : data && data?.success !== false ? (
             renderContent()
           ) : (
             <div className="w-full h-[300px] flex items-center justify-center">
