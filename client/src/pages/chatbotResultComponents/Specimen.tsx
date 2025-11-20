@@ -14,48 +14,70 @@ const Specimen = ({ data }: SpecimenProps) => {
           <div className="flex flex-col gap-5">
             <div className="grid grid-cols-2">
               <p className="text-[#4B5A56]">Botanical Name</p>
-              <p className="text-[#07130E] font-semibold text-[15px]">
-                {data?.botanical_name}
+              <p className="text-[#07130E] font-bold text-[15px]">
+                {data?.Botanical_name || "N/A"}
               </p>
             </div>
 
             <div className="grid grid-cols-2">
               <p className="text-[#4B5A56]">Common Names</p>
-              <>
-                {data?.common_names?.map((val: any) => (
-                  <p className="text-[#07130E] font-semibold text-[15px]">
-                    {val}
-                  </p>
-                ))}
-              </>
+              <p className="text-[#07130E] font-semibold text-[15px]">
+                {Array.isArray(data?.Common_name)
+                  ? data.Common_name.slice(0, 3).join(", ")
+                  : data?.Common_name || "N/A"}
+              </p>
             </div>
 
             <div className="grid grid-cols-2">
               <p className="text-[#4B5A56]">Parts Used</p>
               <>
-                {data?.parts_used?.map((parts: any) => (
-                  <p className="text-[#07130E] font-semibold text-[15px]">
-                    {parts}
-                  </p>
-                ))}
+                <p className="text-[#07130E] font-semibold text-[15px]">
+                  {Array.isArray(data?.Parts_used)
+                    ? data.Parts_used.join(", ")
+                    : data?.Parts_used || "N/A"}
+                </p>
               </>
             </div>
 
             <div className="grid grid-cols-2">
               <p className="text-[#4B5A56]">Preparation Form</p>
               <>
-                {data?.preparation_forms?.map((form: any) => (
-                  <p className="text-[#07130E] font-semibold text-[15px]">
-                    {form}
-                  </p>
-                ))}
+                <p className="text-[#07130E] font-semibold text-[15px]">
+                  {Array.isArray(data?.Preparation_form)
+                    ? data.Preparation_form.join(", ")
+                    : data?.Preparation_form || "N/A"}
+                </p>
               </>
             </div>
 
             <div className="grid grid-cols-2">
               <p className="text-[#4B5A56]">Morphology</p>
               <p className="text-[#07130E] font-semibold text-[15px]">
-                {/* {data?.morphology} */}
+                {(() => {
+                  const value = data?.Morphology;
+
+                  if (!value) return "N/A";
+
+                  // If it's an array
+                  if (Array.isArray(value)) {
+                    return value.slice(0, 3).join(", ");
+                  }
+
+                  // If it's a string
+                  if (typeof value === "string") {
+                    return value;
+                  }
+
+                  // If it's an object, take first 3 values
+                  if (typeof value === "object") {
+                    return Object.values(value)
+                      .slice(0, 3)
+                      .map((v) => String(v).trim())
+                      .join(", ");
+                  }
+
+                  return "N/A";
+                })()}
               </p>
             </div>
           </div>

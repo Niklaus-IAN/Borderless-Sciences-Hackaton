@@ -2,20 +2,33 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CommonSidebarProps, TabType } from "@/types/types";
 import { Tooltip } from "react-tooltip";
+import { setSubmitted } from "../../store/submittedStore";
 
 interface SidebarRightProps {
   tabContent: TabType;
   setTabContent: React.Dispatch<React.SetStateAction<TabType>>;
 }
 
-const ChatSidebarTabs = [
-  { id: "new_chat", label: "New Chat", icon: "/icons/NewchatIcon.svg" },
+interface ChatTab {
+  id: string;
+  label: string;
+  icon: string;
+  newchat?: boolean; // optional
+}
+
+const ChatSidebarTabs: ChatTab[] = [
+  {
+    id: "new_chat",
+    label: "New Chat",
+    icon: "/icons/NewchatIcon.svg",
+    newchat: true,
+  },
   {
     id: "search_chat",
     label: "Search Chat",
     icon: "/icons/searchChatIcon.svg",
   },
-] as const;
+];
 
 const OnchainSidebarTabs = [
   { id: "my_records", label: "My Records", icon: "/icons/my-record-icon.svg" },
@@ -39,7 +52,10 @@ const ChatSideBar: React.FC<CommonSidebarProps> = ({
         <button
           id={tab.id}
           key={tab.id}
-          // onClick={() => setTabContent(tab.id)}
+          onClick={() => {
+            if (tab.newchat === true) setSubmitted(false);
+            // setTabContent(tab.id);
+          }}
           className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 h-[50px] ${
             tabContent === tab.id
               ? "bg-[#F6FFF8] text-black shadow-[inset_0_4px_8px_rgba(0,0,0,0.25),0_4px_8px_rgba(0,0,0,0.25)]"
