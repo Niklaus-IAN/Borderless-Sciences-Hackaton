@@ -2,6 +2,8 @@ import { useQueryData } from "@/hooks/useQueryData";
 import { API_BASE_URL } from "@/lib/config";
 import React, { useState } from "react";
 import ResultPage from "./ResultPage";
+import { setSubmitted } from "../../store/submittedStore";
+import { useSubmitted } from "@/hooks/useSubmitted";
 
 const ctas = [
   { icon: "/icons/herb-icon.svg", label: "Herb" },
@@ -19,7 +21,7 @@ const quickPrompts = [
 
 const Chat = () => {
   const [isActive, setIsActive] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const submitted = useSubmitted();
   const [text, setText] = useState("");
   const { data, isLoading, error, refetch } = useQueryData({ query: text });
 
@@ -31,7 +33,7 @@ const Chat = () => {
     await refetch();
   };
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <section className="flex items-center flex-col min-h-screen py-24 px-20">
@@ -64,9 +66,12 @@ const Chat = () => {
                   className="w-6 h-6"
                 />
               </button>
-              <div className="flex items-center gap-7">
+              <div className="flex items-center gap-2">
                 {ctas.map((cta, index) => (
-                  <button key={index} className="flex items-center gap-2">
+                  <button
+                    key={index}
+                    className="flex items-center gap-2 hover:bg-[#B4D6CD]/20 rounded-[20px] px-4 py-[6px]"
+                  >
                     <img src={cta.icon} alt={cta.label} className="w-5 h-5" />
                     <span className="text-[#7D8C87]">{cta.label}</span>
                   </button>
