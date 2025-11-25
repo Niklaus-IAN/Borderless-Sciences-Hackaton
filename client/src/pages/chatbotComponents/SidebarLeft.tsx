@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 import { TabType } from "@/types/types";
 import React, { useState } from "react";
 import { Tooltip } from "react-tooltip";
+import { Link } from "wouter";
 
 interface SidebarLeftProps {
   tabContent: TabType;
@@ -33,11 +34,15 @@ const SidebarLeft: React.FC<SidebarLeftProps> = ({
           sidebarShown ? "px-9" : "px-4  flex-col gap-5"
         }`}
       >
-        <img
-          src="/icons/borderless-logo.png"
-          alt="borderless-logo"
-          className="w-[30px] h-[50px] cursor-pointer"
-        />
+        <Link href="/">
+          {" "}
+          <img
+            src="/icons/borderless-logo.png"
+            alt="borderless-logo"
+            className="w-[30px] h-[50px] cursor-pointer"
+          />
+        </Link>
+
         <img
           src="/icons/toggleIcon.png"
           alt="toggle-icon"

@@ -6,6 +6,8 @@ import Botanicals from "../chatbotResultComponents/Botanicals";
 import Ailments from "../chatbotResultComponents/Ailments";
 import Comparisons from "../chatbotResultComponents/Comparisons";
 import Specimen from "../chatbotResultComponents/Specimen";
+import { ArrowLeft } from "lucide-react";
+import { setSubmitted } from "../../store/submittedStore";
 
 type ResultPageProps = {
   data?: any;
@@ -51,7 +53,15 @@ const ResultPage: React.FC<ResultPageProps> = ({
   ];
 
   return (
-    <section className="flex items-center w-full flex-col min-h-screen">
+    <section className="flex items-center w-full flex-col min-h-screen relative">
+      <div
+        className="cursor-pointer absolute -top-10 -left-10"
+        onClick={() => {
+          setSubmitted(false);
+        }}
+      >
+        <ArrowLeft className="w-6 h-6" />
+      </div>
       <div className="bg-[#F6FFF8] ml-auto px-8 py-4 rounded-[16px] max-w-[540px] mb-16">
         <p className="text-[#07130E]">{text}</p>
       </div>
