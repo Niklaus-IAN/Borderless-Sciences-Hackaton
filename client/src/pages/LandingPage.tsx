@@ -11,45 +11,79 @@ import { MeetTheAISection } from "./sections/MeetTheAISection";
 import { NavigationBarSection } from "./sections/NavigationBarSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
 import { ShapeTheFutureSection } from "./sections/ShapeTheFutureSection";
+import { motion, useInView, useAnimation } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 export const LandingPage = (): JSX.Element => {
   return (
     <div className="bg-white flex flex-col items-center w-full min-h-screen">
       <div className="bg-white w-full relative">
         <NavigationBarSection />
+
         <div className="mt-28 py-8">
-          <HeroBannerSection />
+          <Reveal>
+            <HeroBannerSection />
+          </Reveal>
         </div>
+
         <div className="py-16" id="how-it-works">
-          <HowItWorksSection />
+          <Reveal>
+            <HowItWorksSection />
+          </Reveal>
         </div>
+
         <div className="py-16">
-          <CoreFeaturesSection />
+          <Reveal>
+            <CoreFeaturesSection />
+          </Reveal>
         </div>
+
         <div className="py-24" id="about">
-          <MeetTheAISection />
+          <Reveal>
+            <MeetTheAISection />
+          </Reveal>
         </div>
+
         <div className="py-16">
-          <InformationGroupSection />
+          <Reveal>
+            <InformationGroupSection />
+          </Reveal>
         </div>
+
         <div className="py-16" id="community">
-          <CommunitySection />
+          <Reveal>
+            <CommunitySection />
+          </Reveal>
         </div>
+
         <div className="py-16">
-          <ShapeTheFutureSection />
+          <Reveal>
+            <ShapeTheFutureSection />
+          </Reveal>
         </div>
+
         <div className="py-26">
-          <TestimonialsSection />
+          <Reveal>
+            <TestimonialsSection />
+          </Reveal>
         </div>
+
         <div className="py-16 px-[140px]">
-          <CallToActionSection />
+          <Reveal>
+            <CallToActionSection />
+          </Reveal>
         </div>
-        <div className="pt-32">
-          <ImageGallerySection />
-        </div>
-        <div className="pt-[2px]">
-          <ImageWrapperSection />
-        </div>
+
+        <Reveal>
+          <>
+            <div className="pt-32">
+              <ImageGallerySection />
+            </div>
+            <div className="pt-[2px]">
+              <ImageWrapperSection />
+            </div>
+          </>
+        </Reveal>
       </div>
     </div>
   );
