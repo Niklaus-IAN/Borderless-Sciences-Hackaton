@@ -11,13 +11,16 @@ import { MeetTheAISection } from "./sections/MeetTheAISection";
 import { NavigationBarSection } from "./sections/NavigationBarSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
 import { ShapeTheFutureSection } from "./sections/ShapeTheFutureSection";
-import { motion, useInView, useAnimation } from "framer-motion";
 import Reveal from "@/components/Reveal";
+import { MobilePulse } from "@/components/MobilePulse";
 
 export const LandingPage = (): JSX.Element => {
   return (
     <div className="bg-white flex flex-col items-center w-full min-h-screen">
-      <div className="bg-white w-full relative">
+      <div className="flex flex-col gap-4 lg:hidden items-center justify-center w-full min-h-screen px-10 text-center bg-[#F5F5F5]">
+        <MobilePulse />
+      </div>
+      <div className="hidden lg:block bg-white w-full relative">
         <NavigationBarSection />
 
         <div className="mt-28 py-8">

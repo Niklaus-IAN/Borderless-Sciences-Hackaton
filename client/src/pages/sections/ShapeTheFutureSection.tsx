@@ -30,7 +30,7 @@ export const ShapeTheFutureSection = (): JSX.Element => {
               src="/icons/spinner.svg"
               alt="spinner"
               className="w-[125px] h-[125px] animate-spin"
-              style={{ animationDuration: "3s" }}
+              style={{ animationDuration: "9s" }}
             />
           </div>
         </div>

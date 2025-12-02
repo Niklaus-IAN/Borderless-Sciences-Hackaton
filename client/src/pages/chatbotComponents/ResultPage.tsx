@@ -8,6 +8,8 @@ import Comparisons from "../chatbotResultComponents/Comparisons";
 import Specimen from "../chatbotResultComponents/Specimen";
 import { ArrowLeft } from "lucide-react";
 import { setSubmitted } from "../../store/submittedStore";
+import { motion } from "framer-motion";
+import SpeechBubbleLoader from "@/components/Chatbotloader";
 
 type ResultPageProps = {
   data?: any;
@@ -90,14 +92,7 @@ const ResultPage: React.FC<ResultPageProps> = ({
 
         <>
           {loading ? (
-            <div className="w-[700px] rounded-[16px] bg-[#B4D6CD] h-[394px] flex items-center justify-center">
-              <img
-                src="/icons/spinner.svg"
-                alt="spinner"
-                className="w-[125px] h-[125px] animate-spin"
-                style={{ animationDuration: "2s" }}
-              />
-            </div>
+            <SpeechBubbleLoader />
           ) : data && data?.success !== false ? (
             renderContent()
           ) : (
