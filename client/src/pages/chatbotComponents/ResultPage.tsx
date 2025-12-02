@@ -8,8 +8,7 @@ import Comparisons from "../chatbotResultComponents/Comparisons";
 import Specimen from "../chatbotResultComponents/Specimen";
 import { ArrowLeft } from "lucide-react";
 import { setSubmitted } from "../../store/submittedStore";
-import { motion } from "framer-motion";
-import SpeechBubbleLoader from "@/components/Chatbotloader";
+import SpeechBubbleLoader from "@/components/SpeechBubbleLoader";
 
 type ResultPageProps = {
   data?: any;
